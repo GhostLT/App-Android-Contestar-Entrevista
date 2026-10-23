@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Copiloto Entrevista IA</string>
+    <string name="tab_live">En Vivo</string>
+    <string name="tab_history">Historial</string>
+    <string name="tab_pitch">Mi Pitch</string>
+    <string name="tab_settings">Ajustes</string>
+
+    <string name="start_listening">Iniciar Escucha</string>
+    <string name="pause_listening">Pausar Escucha</string>
+    <string name="send_to_gemini">🚀 Enviar a Gemini</string>
+    <string name="clear">✕ Limpiar</string>
+    <string name="copy">📋 Copiar</string>
+    <string name="brief">⚡ Más breve</string>
+    <string name="detail">🔍 Más detalle</string>
+
+    <string name="voice_detected_label">Voz detectada / Pregunta:</string>
+    <string name="voice_detected_placeholder">El audio del entrevistador aparecerá aquí. Puedes tocar para corregir manualmente palabras antes de enviar...</string>
+    <string name="prompter_welcome_title">Listo para la reunión</string>
+    <string name="prompter_welcome_body">Presiona "Iniciar Escucha". Cuando el entrevistador formule una pregunta, Gemini te mostrará en segundos la respuesta senior directa (🎯 Inmediata, ⚡ Puntos clave, 💡 Caso real).</string>
+</resources>
