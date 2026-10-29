@@ -1,51 +1,32 @@
-# 📱 Copiloto de Entrevistas IA — Android Nativo
+# 📱 Copiloto de Entrevistas IA — Android Nativo v2.0
 
-Aplicación Android nativa para asistencia en entrevistas de trabajo técnicas en tiempo real, impulsada por Google Gemini y personalizada para el perfil de **Javier Viveros Huesca** (Ingeniero Senior Full-Stack con IA).
+Asistente de entrevistas técnicas en tiempo real para Android, optimizado para búsqueda instantánea por palabras clave y teleprompter con Google Gemini.
 
----
-
-## 🌟 Características Principales
-
-- 🎙️ **Modo Escucha Activa**: Reconocimiento de voz continuo sin interrupciones que detecta preguntas del entrevistador.
-- ✏️ **Edición y Corrección Manual**: Campo de texto editable para modificar o afinar cualquier palabra captada por el micrófono antes de consultar a la IA.
-- ⚡ **Teleprompter de Alta Velocidad**: Respuestas estructuradas con formato directo:
-  - 🎯 **Respuesta Inmediata**: 1-2 oraciones para decir al instante.
-  - ⚡ **Puntos Clave**: Viñetas con protocolos, librerías y arquitectura.
-  - 💡 **Aplicación / Producción**: Caso de éxito real.
-- 🌐 **Soporte Bilingüe Instantáneo**: Alternancia rápida entre Español (`es-ES`) e Inglés (`en-US`) con un solo toque.
-- 🔇 **Filtro de Ruido & Charla Casual**: Ignora automáticamente saludos, tos, ruidos o frases de cortesía (`[IGNORAR]`).
-- 📋 **Pestaña "Mi Pitch & Formación"**:
-  - Resumen ejecutivo de postulación.
-  - Las 7 preguntas y respuestas oficiales del proceso técnico (Hireline / PCoS / Angélica).
-  - Trayectoria laboral detallada (Empire Engineering, AT&T, Nextel & Nokia).
-- 💾 **Historial Local SQLite**: Almacenamiento privado y permanente de todas las preguntas de la entrevista en el celular, con buscador integrado.
-- 📱 **Optimizaciones para Entrevistas**:
-  - Pantalla siempre encendida para evitar bloqueos durante la videollamada.
-  - Vibración táctil discreta cuando llega la respuesta.
-  - Preguntas rápidas frecuentes en un toque (Switch Cisco, Arquitectura RAG, vLLM, Clean Architecture, Salario).
+Personalizado para el perfil técnico de **Javier Viveros Huesca** (Senior RF Optimization & 5G NR Specialist / Senior Full-Stack con IA).
 
 ---
 
-## 🚀 Instalación
+## 🌟 Novedades v2.0 (Basado en `Contestar-Entrevista`)
 
-El archivo APK compilado se encuentra listo para instalar en:
+- 🔍 **Búsqueda Instantánea por Palabras Clave**: Reemplazo del micrófono para eliminar fallas de audio, ruidos de ambiente o capturas imprecisas en el celular. Búsqueda local en < 5ms.
+- 📚 **Guía Completa Oficial Embebida (48 Preguntas en 13 Módulos)**:
+  - Optimización RF, RAN, 4G LTE y 5G NR con Ericsson (Baseband, AIR 6449, Massive MIMO).
+  - Los 5 Pilares de KPIs (Accesibilidad, Retenibilidad, Movilidad A1-A5/B1/B2, Throughput, Sleeping Cells).
+  - 5G NSA Opción 3x (SgNB Addition, Movilidad y PSCell change).
+  - Features avanzadas: Carrier Aggregation, DSS, MLB y LMS (Layer Management Strategy).
+  - Casos prácticos RCA: Troubleshooting de PIM, RTWP, Call Drops post-upgrade, Drive Test 5G.
+  - Metodología STAR, preguntas al entrevistador y cheat sheet de comandos Moshell.
+  - Full-Stack moderno con IA (vLLM, Llama 3, RAG con pgvector, React, TypeScript, FastAPI) y redes (Switch Cisco, Capa 2/3).
+- 🌐 **Soporte Bilingüe Completo**: Alterna entre Español (`es-ES`) e Inglés (`en-US`) con un solo toque.
+- 🤖 **Teleprompter Inteligente con Gemini**: Respuestas senior estructuradas con botones para acortar (`⚡ Más breve`) o profundizar (`🔍 Más detalle`).
+- 📱 **Optimizaciones de Pantalla**: Mantiene la pantalla encendida permanentemente y vibra suavemente al recibir respuestas.
+
+---
+
+## 🚀 Instalación del APK
+
+El APK compilado listo para instalar está en tu Escritorio:
 `C:\Users\PC\Desktop\Copiloto_Entrevista_Javier.apk`
 
-1. Pásalo a tu celular Android por cable USB, WhatsApp o Google Drive.
-2. Ábrelo e instálalo (permite "Instalar apps de orígenes desconocidos").
-3. Concede el permiso de micrófono.
-4. ¡Listo! Ya viene con tu API Key y configuración precargada para funcionar de inmediato.
-
----
-
-## 💻 Compilación desde Código Fuente
-
-Requisitos en PC:
-- OpenJDK 17 (`JAVA_HOME`)
-- Android SDK (API 34, Build-Tools 34.0.0)
-
-Comando de compilación:
-```bash
-./gradlew assembleDebug
-```
-El APK se genera en `app/build/outputs/apk/debug/app-debug.apk`.
+1. Pásalo a tu celular Android e instálalo.
+2. ¡Listo! Ya incluye tu API Key de Gemini y la base de datos de preguntas precargada.

@@ -31,31 +31,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Copiloto Entrevista IA"
+                android:text="Copiloto Entrevistas IA"
                 android:textColor="@color/text_primary"
-                android:textSize="18sp"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Javier Viveros • Senior Full-Stack IA"
+                android:text="Javier Viveros • Senior RF 5G &amp; Full-Stack IA"
                 android:textColor="@color/primary"
-                android:textSize="12sp" />
+                android:textSize="11sp" />
         </LinearLayout>
 
-        <!-- Status Chip (Listening / Paused) -->
+        <!-- Mode Badge (Instant Search) -->
         <TextView
-            android:id="@+id/tvHeaderStatus"
+            android:id="@+id/tvHeaderMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_status_idle"
+            android:background="@drawable/bg_status_listening"
             android:paddingStart="10dp"
             android:paddingTop="4dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
-            android:text="⏸ EN PAUSA"
-            android:textColor="@color/text_dim"
+            android:text="⚡ 48 PREGUNTAS"
+            android:textColor="@color/accent_green"
             android:textSize="11sp"
             android:textStyle="bold"
             android:layout_marginEnd="8dp" />
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <!-- ============================================== -->
-        <!-- TAB 1: EN VIVO (LIVE COPILOT)                  -->
+        <!-- TAB 1: BÚSQUEDA INSTANTÁNEA & TELEPROMPTER     -->
         <!-- ============================================== -->
         <ScrollView
             android:id="@+id/tabLive"
@@ -100,27 +100,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="14dp">
 
-                <!-- Listening Main Toggle Button -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnToggleListening"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:text="🎙️ INICIAR ESCUCHA ACTIVA"
-                    android:textColor="@color/on_primary"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="@color/primary"
-                    app:cornerRadius="12dp"
-                    android:layout_marginBottom="14dp" />
-
-                <!-- Detected Voice / Manual Edit Section -->
+                <!-- Search Input Field Box -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginBottom="14dp">
+                    android:layout_marginBottom="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -133,50 +120,51 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Voz detectada / Pregunta:"
+                            android:text="🔍 Palabras clave del entrevistador:"
                             android:textColor="@color/text_primary"
                             android:textSize="13sp"
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tvManualEditHint"
+                            android:id="@+id/tvSearchRealtimeCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="✏️ Editable"
-                            android:textColor="@color/text_dim"
+                            android:text="Escribe para filtrar al instante"
+                            android:textColor="@color/accent_green"
                             android:textSize="11sp" />
                     </LinearLayout>
 
-                    <!-- Editable detected text box -->
+                    <!-- Text input for keywords -->
                     <EditText
-                        android:id="@+id/etDetectedQuestion"
+                        android:id="@+id/etSearchKeywords"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minHeight="75dp"
-                        android:maxHeight="130dp"
+                        android:minHeight="52dp"
                         android:background="@drawable/bg_edittext"
-                        android:padding="12dp"
-                        android:gravity="top|start"
-                        android:hint="@string/voice_detected_placeholder"
+                        android:paddingStart="14dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="12dp"
+                        android:hint="Ej: dynamic, B2, RTWP, LMS, PIM, switch, RAG..."
                         android:textColor="@color/text_primary"
                         android:textColorHint="@color/text_dim"
-                        android:textSize="14sp"
-                        android:inputType="textMultiLine|textCapSentences"
-                        android:scrollbars="vertical"
+                        android:textSize="15sp"
+                        android:inputType="textCapSentences|textAutoCorrect"
+                        android:imeOptions="actionSearch"
                         android:layout_marginBottom="8dp" />
 
-                    <!-- Send & Clear Buttons -->
+                    <!-- Action buttons row: Gemini query & Clear -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnSendQuestion"
+                            android:id="@+id/btnAskGemini"
                             android:layout_width="0dp"
                             android:layout_height="44dp"
                             android:layout_weight="1"
-                            android:text="@string/send_to_gemini"
+                            android:text="🤖 Consultar a Gemini"
                             android:textColor="@color/on_primary"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -185,11 +173,11 @@
                             android:layout_marginEnd="8dp" />
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnClearQuestion"
+                            android:id="@+id/btnClearSearch"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="wrap_content"
                             android:layout_height="44dp"
-                            android:text="@string/clear"
+                            android:text="✕ Limpiar"
                             android:textColor="@color/text_secondary"
                             android:textSize="13sp"
                             app:cornerRadius="8dp"
@@ -197,11 +185,11 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Quick Questions Chips (Horizontal Scroll) -->
+                <!-- Quick Keywords Chips (Horizontal Scroll) -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="⚡ PREGUNTAS RÁPIDAS FRECUENTES:"
+                    android:text="⚡ TEMAS FRECUENTES (TOCA PARA BUSCAR):"
                     android:textColor="@color/text_dim"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -211,7 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
-                    android:layout_marginBottom="14dp">
+                    android:layout_marginBottom="12dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -219,24 +207,79 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/chipSwitchCisco"
+                            android:id="@+id/chipDynamicB2"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="38dp"
-                            android:text="Switch Cisco"
+                            android:layout_height="36dp"
+                            android:text="Dynamic B2"
                             android:textColor="@color/primary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:strokeColor="@color/bg_card_stroke"
                             android:layout_marginEnd="6dp" />
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/chipRag"
+                            android:id="@+id/chipRtwpPim"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="38dp"
-                            android:text="Arquitectura RAG"
+                            android:layout_height="36dp"
+                            android:text="RTWP PIM"
                             android:textColor="@color/primary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/bg_card_stroke"
+                            android:layout_marginEnd="6dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/chipLms"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="LMS Traffic Steering"
+                            android:textColor="@color/primary"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/bg_card_stroke"
+                            android:layout_marginEnd="6dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/chipNsa"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="5G NSA Option 3x"
+                            android:textColor="@color/primary"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/bg_card_stroke"
+                            android:layout_marginEnd="6dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/chipMoshell"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Moshell Comandos"
+                            android:textColor="@color/primary"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/bg_card_stroke"
+                            android:layout_marginEnd="6dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/chipMimo"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Massive MIMO"
+                            android:textColor="@color/primary"
+                            android:textSize="11sp"
+                            app:strokeColor="@color/bg_card_stroke"
+                            android:layout_marginEnd="6dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/chipSwitchCisco"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Switch Cisco"
+                            android:textColor="@color/primary"
+                            android:textSize="11sp"
                             app:strokeColor="@color/bg_card_stroke"
                             android:layout_marginEnd="6dp" />
 
@@ -244,21 +287,10 @@
                             android:id="@+id/chipVllm"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="38dp"
-                            android:text="vLLM &amp; Inferencia"
+                            android:layout_height="36dp"
+                            android:text="vLLM &amp; RAG"
                             android:textColor="@color/primary"
-                            android:textSize="12sp"
-                            app:strokeColor="@color/bg_card_stroke"
-                            android:layout_marginEnd="6dp" />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/chipCleanArch"
-                            style="@style/Widget.Material3.Button.OutlinedButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="38dp"
-                            android:text="Clean Architecture"
-                            android:textColor="@color/primary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:strokeColor="@color/bg_card_stroke"
                             android:layout_marginEnd="6dp" />
 
@@ -266,16 +298,43 @@
                             android:id="@+id/chipSueldo"
                             style="@style/Widget.Material3.Button.OutlinedButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="38dp"
+                            android:layout_height="36dp"
                             android:text="Expectativa Salarial"
                             android:textColor="@color/primary"
-                            android:textSize="12sp"
+                            android:textSize="11sp"
                             app:strokeColor="@color/bg_card_stroke" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
-                <!-- Teleprompter Result Card -->
+                <!-- Search Results List Container -->
+                <LinearLayout
+                    android:id="@+id/layoutSearchResults"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/tvSearchResultsHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📋 COINCIDENCIAS ENCONTRADAS (TOCA PARA LEER):"
+                        android:textColor="@color/accent_amber"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="6dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSearchResults"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+                </LinearLayout>
+
+                <!-- Teleprompter Main Card -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTeleprompter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/bg_card"
@@ -297,9 +356,10 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:gravity="center_vertical"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="8dp">
 
                             <TextView
+                                android:id="@+id/tvPrompterTitle"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -309,7 +369,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/tvPrompterModelBadge"
+                                android:id="@+id/tvPrompterSourceBadge"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/bg_badge_language"
@@ -317,11 +377,22 @@
                                 android:paddingTop="2dp"
                                 android:paddingEnd="8dp"
                                 android:paddingBottom="2dp"
-                                android:text="gemini-3.5-flash-lite"
+                                android:text="Guía Oficial"
                                 android:textColor="@color/primary"
                                 android:textSize="10sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
+
+                        <!-- Question Prompt -->
+                        <TextView
+                            android:id="@+id/tvPrompterQuestion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Escribe palabras clave arriba o pulsa un botón para ver la respuesta senior inmediata."
+                            android:textColor="@color/text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="10dp" />
 
                         <!-- Loading Indicator -->
                         <ProgressBar
@@ -333,17 +404,46 @@
                             android:visibility="gone"
                             android:layout_marginBottom="8dp" />
 
-                        <!-- Teleprompter Main Answer Text -->
+                        <!-- Strategy Box (collapsible / prominent) -->
+                        <LinearLayout
+                            android:id="@+id/layoutStrategy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#15F59E0B"
+                            android:padding="10dp"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🎯 ESTRATEGIA DE RESPUESTA:"
+                                android:textColor="@color/accent_amber"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvStrategyText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Estrategia..."
+                                android:textColor="@color/text_primary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <!-- Main Teleprompter Text -->
                         <TextView
                             android:id="@+id/tvTeleprompterText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/prompter_welcome_body"
-                            android:textColor="@color/text_primary"
-                            android:textSize="15sp"
+                            android:text="Selecciona una pregunta o escribe un término técnico (ej: 'dynamic B2', 'PIM RTWP', 'LMS', 'Cisco').\n\nEl teleprompter te mostrará la respuesta directa de nivel Senior lista para decir en voz alta."
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
                             android:lineSpacingExtra="4dp"
                             android:textIsSelectable="true"
-                            android:layout_marginBottom="12dp" />
+                            android:layout_marginBottom="14dp" />
 
                         <!-- Follow-up / Refine Bar -->
                         <LinearLayout
@@ -357,7 +457,7 @@
                                 style="@style/Widget.Material3.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="36dp"
-                                android:text="@string/brief"
+                                android:text="⚡ Más breve"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="11sp"
                                 app:strokeColor="@color/bg_card_stroke"
@@ -368,7 +468,7 @@
                                 style="@style/Widget.Material3.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="36dp"
-                                android:text="@string/detail"
+                                android:text="🔍 Más detalle"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="11sp"
                                 app:strokeColor="@color/bg_card_stroke"
@@ -384,7 +484,7 @@
                                 style="@style/Widget.Material3.Button.OutlinedButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="36dp"
-                                android:text="@string/copy"
+                                android:text="📋 Copiar"
                                 android:textColor="@color/primary"
                                 android:textSize="11sp"
                                 app:strokeColor="@color/primary" />
@@ -395,74 +495,43 @@
         </ScrollView>
 
         <!-- ============================================== -->
-        <!-- TAB 2: HISTORIAL (CONVERSATIONS)               -->
+        <!-- TAB 2: GUÍA COMPLETA (48 PREGUNTAS)           -->
         <!-- ============================================== -->
         <LinearLayout
-            android:id="@+id/tabHistory"
+            android:id="@+id/tabCatalog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp"
+            android:padding="14dp"
             android:visibility="gone">
 
-            <!-- Search Bar & Clear All -->
-            <LinearLayout
+            <!-- Search / Filter in Catalog -->
+            <EditText
+                android:id="@+id/etCatalogFilter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
-
-                <EditText
-                    android:id="@+id/etHistorySearch"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bg_edittext"
-                    android:hint="🔍 Buscar en preguntas..."
-                    android:textColor="@color/text_primary"
-                    android:textColorHint="@color/text_dim"
-                    android:textSize="13sp"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:singleLine="true"
-                    android:layout_marginEnd="8dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnClearHistory"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:text="🗑️ Borrar"
-                    android:textColor="@color/accent_red"
-                    android:textSize="12sp"
-                    app:strokeColor="@color/bg_card_stroke" />
-            </LinearLayout>
+                android:layout_height="44dp"
+                android:background="@drawable/bg_edittext"
+                android:hint="🔍 Filtrar en las 48 preguntas..."
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_dim"
+                android:textSize="13sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:singleLine="true"
+                android:layout_marginBottom="8dp" />
 
             <TextView
-                android:id="@+id/tvHistoryCount"
+                android:id="@+id/tvCatalogCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 preguntas registradas"
+                android:text="48 preguntas en 13 módulos oficiales"
                 android:textColor="@color/text_dim"
                 android:textSize="12sp"
                 android:layout_marginBottom="8dp" />
 
-            <!-- Empty State -->
-            <TextView
-                android:id="@+id/tvHistoryEmpty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Aún no hay preguntas en el historial.\nLas preguntas que respondas en la reunión aparecerán aquí automáticamente."
-                android:textColor="@color/text_dim"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:padding="40dp"
-                android:visibility="gone" />
-
-            <!-- History RecyclerView -->
+            <!-- Catalog RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvHistory"
+                android:id="@+id/rvCatalog"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -514,15 +583,15 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Ingeniero Senior Full-Stack con IA"
+                            android:text="Senior RF Optimization &amp; 5G Specialist | Full-Stack con IA"
                             android:textColor="@color/primary"
-                            android:textSize="14sp"
+                            android:textSize="13sp"
                             android:layout_marginBottom="8dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="📧 viverosjavier86@gmail.com   📱 +52 (669) 533-0508\n📍 Mazatlán, Sinaloa, México (Remoto)"
+                            android:text="📧 viverosjavier86@gmail.com   📱 +52 (669) 533-0508\n📍 México (Disponible Remoto)"
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp"
                             android:lineSpacingExtra="2dp"
@@ -539,7 +608,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="💰 EXPECTATIVA SALARIAL: $2,500 USD / mes (Contractor)"
+                                android:text="💰 EXPECTATIVA: $2,500 USD / mes (Contractor Remoto)"
                                 android:textColor="@color/accent_green"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
@@ -574,7 +643,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="🚀 PITCH DE POSICIONAMIENTO (PCoS / IA)"
+                            android:text="🚀 PITCH PROFESIONAL &amp; VALOR AGREGADO"
                             android:textColor="@color/primary"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -591,29 +660,11 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- 7 Questions Header -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="📋 7 PREGUNTAS DEL PROCESO (HIRELINE / ANGÉLICA):"
-                    android:textColor="@color/text_dim"
-                    android:textSize="11sp"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
-
-                <!-- Questions RecyclerView (Nested) -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvPitchQuestions"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_marginBottom="14dp" />
-
                 <!-- Work Experience Section -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="💼 TRAYECTORIA Y ROLES PREVIOS:"
+                    android:text="💼 TRAYECTORIA Y EMPRESAS:"
                     android:textColor="@color/text_dim"
                     android:textSize="11sp"
                     android:textStyle="bold"
@@ -638,7 +689,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Empire Engineering • Senior Full-Stack &amp; AI"
+                            android:text="Empire Engineering • Senior RF &amp; Applied AI"
                             android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -654,7 +705,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="• Lideró desarrollo con React, TypeScript, FastAPI y PostgreSQL.\n• Servido de Llama 3 y Mistral con vLLM en AWS GPU (-65% costos).\n• RAG con PostgreSQL pgvector, chunking semántico y rerankers (&lt;2% alucinaciones).\n• Lideró equipo de 5 ingenieros con Clean Architecture y CI/CD (&gt;85% pruebas)."
+                            android:text="• Optimización RAN en 4G/LTE y 5G NR con Ericsson (Baseband 5216/6630, AIR 6449, Massive MIMO).\n• Layer Management Strategy (LMS) y Mobility Load Balancing (+72% Throughput).\n• Sintonización 5G NSA (Option 3x EN-DC), eventos B1, A5 y A3 (+98.7% SgNB SR).\n• Análisis forense de PIM y RTWP (normalizado de -86 dBm a -103.8 dBm).\n• Pipeline de IA con vLLM y Llama 3 en AWS GPU (-65% costos)."
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp"
                             android:lineSpacingExtra="3dp" />
@@ -680,7 +731,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="AT&amp;T • Systems Tech Lead &amp; Software Engineer"
+                            android:text="AT&amp;T • Senior RF &amp; Systems Tech Lead"
                             android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -696,7 +747,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="• Arquitectura y supervisión de 120+ plataformas críticas (99.999% SLA).\n• APIs de alta concurrencia en Python (Flask/Django) con PostgreSQL y Oracle.\n• Ingesta con Ericsson y Huawei; coordinó equipo de 6 ingenieros bajo Scrum."
+                            android:text="• Supervisión y optimización de 120+ plataformas de misión crítica (99.999% SLA).\n• Reducción de DCR en VoLTE y afinación de handovers intra/inter-frecuencia.\n• APIs de ingesta y telemetría de red con Ericsson y Huawei."
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp"
                             android:lineSpacingExtra="3dp" />
@@ -722,7 +773,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nextel &amp; Nokia • Software Automation Engineer"
+                            android:text="Nextel &amp; Nokia • RF Optimization Engineer"
                             android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -738,13 +789,12 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="• Scripts de automatización en Python y Bash para diagnóstico en Linux 24/7.\n• Bases de datos MySQL y resolución proactiva de incidentes bajo SLAs."
+                            android:text="• Optimización RF y performance en redes 3G/WCDMA y automatización con Linux y Python."
                             android:textColor="@color/text_secondary"
                             android:textSize="12sp"
                             android:lineSpacingExtra="3dp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
             </LinearLayout>
         </ScrollView>
 
@@ -792,7 +842,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="La clave se almacena de forma segura y local en tu celular:"
+                            android:text="Clave de IA para consultas en tiempo real y refinamiento:"
                             android:textColor="@color/text_dim"
                             android:textSize="12sp"
                             android:layout_marginBottom="8dp" />
@@ -900,7 +950,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="📱 COMPORTAMIENTO EN REUNIÓN"
+                            android:text="📱 AJUSTES DE REUNIÓN"
                             android:textColor="@color/primary"
                             android:textSize="13sp"
                             android:textStyle="bold"
@@ -920,17 +970,7 @@
                             android:id="@+id/swVibration"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Vibración táctil al recibir respuesta\n(Te avisa discretamente sin mirar)"
-                            android:textColor="@color/text_primary"
-                            android:textSize="13sp"
-                            android:checked="true"
-                            android:layout_marginBottom="10dp" />
-
-                        <com.google.android.material.materialswitch.MaterialSwitch
-                            android:id="@+id/swAutoSend"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Envío automático al detectar silencio\n(Si se desactiva, requieres pulsar Enviar)"
+                            android:text="Vibración táctil al recibir respuesta"
                             android:textColor="@color/text_primary"
                             android:textSize="13sp"
                             android:checked="true" />

@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_live"
-        android:icon="@android:drawable/ic_btn_speak_now"
-        android:title="@string/tab_live" />
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Búsqueda" />
     <item
-        android:id="@+id/nav_history"
-        android:icon="@android:drawable/ic_menu_recent_history"
-        android:title="@string/tab_history" />
+        android:id="@+id/nav_catalog"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Guía 48P" />
     <item
         android:id="@+id/nav_pitch"
         android:icon="@android:drawable/ic_menu_myplaces"
-        android:title="@string/tab_pitch" />
+        android:title="Mi Pitch" />
     <item
         android:id="@+id/nav_settings"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:title="@string/tab_settings" />
+        android:title="Ajustes" />
 </menu>
